@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>NDR | {% block titulo %} Inicio {% endblock %}</title>
+    <title>NDR | {% block titulo %} {% endblock %}</title>
 
+
+    {% block css %}
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link href="/static/css/animate.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
+
+    {% endblock %}
 
 </head>
 
@@ -27,7 +31,9 @@
                 <li class="nav-header">
                     <div class="profile-element">
                         <span>
-                            <img alt="image" class="img-circle" src="/static/img/profile_small.jpg"/>
+                            <a href="/">
+                                <img alt="image" class="img-circle" src="/static/img/profile_small.jpg"/>
+                            </a>
                         </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs">
@@ -44,13 +50,13 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a href="#">Geográficos</a></li>
-                        <li><a href="#">Gráficos</a></li>
-                        <li><a href="#">Documentos</a></li>
+                        <li><a href="/geo_reportes">Geográficos</a></li>
+                        <li><a href="/gra_reportes">Gráficos</a></li>
+                        <li><a href="/doc_reportes">Documentos</a></li>
                     </ul>
                 </li>
                 <li id="lista_item_consultas">
-                    <a href="#"><i class="fa fa-search"></i>
+                    <a href="#"><i class="fa fa-users"></i>
                         <span class="nav-label">Encuestadores</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -61,13 +67,23 @@
                     </ul>
                 </li>
                 <li id="lista_item_base_datos">
-                    <a href="#"><i class="fa fa-search"></i>
+                    <a href="#"><i class="fa fa-database"></i>
                         <span class="nav-label">Base de Datos</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li><a href="#">Respaldar</a></li>
                         <li><a href="#">Estadísticas</a></li>
+                    </ul>
+                </li>
+                <li id="lista_item_usuario">
+                    <a href="#"><i class="fa fa-user"></i>
+                        <span class="nav-label">Diagnosticos</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="#">Resultados</a></li>
+                        <li><a href="#">Encuestas</a></li>
                     </ul>
                 </li>
             </ul>
@@ -82,10 +98,21 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
+
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
-                        <i class="fa fa-bars"></i>
-                    </a>
+                        <i class="fa fa-bars"></i> </a>
+
+                    <!-- TemporalStart -->
+                    <div style="float: left; height: 50px; vertical-align:middle; padding-left: 10px; display: inline-table;">
+                            <h2  style="line-height: 15px;"><b>
+                                {% block ruta %}
+                                {% endblock %}
+                            </b></h2>
+                    </div>
+                    <!-- TemporalEnd -->
+
                 </div>
+
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
                         <span class="m-r-sm text-muted welcome-message">
@@ -93,7 +120,7 @@
                     </li>
 
                     <li>
-                        <a href="/salir">
+                        <a href="/ingreso">
                             <i class="fa fa-sign-out"></i>
                             SALIR
                         </a>
@@ -108,41 +135,39 @@
         {% endblock %}
 
         {% block pie_de_pagina %}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="wrapper wrapper-content">
-                    <div class="row">
-                    </div>
+            <div class="footer">
+                <div class="pull-right">
+                    <strong>AA Developers</strong>
                 </div>
-                <div class="footer">
-                    <div class="pull-right">
-                        <strong>AA Developers</strong>
-                    </div>
-                    <div>
-                        <strong>Todos los derechos reservados.</strong> FIEC-ESPOL &copy; 2015-2016
-                    </div>
+                <div>
+                    <strong>Todos los derechos reservados.</strong> FIEC-ESPOL &copy; 2015-2016
                 </div>
             </div>
-        </div>
         {% endblock %}
 
     </div>
 </div>
 
+{% block javascript %}
 <!-- Mainly scripts -->
 
 <script src="/static/js/jquery-2.1.1.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 
+<!-- Navbar Menu javascript -->
 <script src="/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 <!-- Custom and plugin javascript -->
 <script src="/static/js/inspinia.js"></script>
+
+<!-- Page load javascript -->
 <script src="/static/js/plugins/pace/pace.min.js"></script>
 
 <!-- jQuery UI -->
 <script src="/static/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+{% endblock %}
 
 </body>
 </html>

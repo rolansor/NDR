@@ -1,10 +1,10 @@
 $(function () {
 
     var lineData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
         datasets: [
             {
-                label: "Example dataset",
+                label: "Dataset Ejemplo",
                 fillColor: "rgba(220,220,220,0.5)",
                 strokeColor: "rgba(220,220,220,1)",
                 pointColor: "rgba(220,220,220,1)",
@@ -14,7 +14,7 @@ $(function () {
                 data: [65, 59, 80, 81, 56, 55, 40]
             },
             {
-                label: "Example dataset",
+                label: "Dataset Ejemplo",
                 fillColor: "rgba(26,179,148,0.5)",
                 strokeColor: "rgba(26,179,148,0.7)",
                 pointColor: "rgba(26,179,148,1)",
@@ -47,7 +47,7 @@ $(function () {
     var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
 
     var barData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
         datasets: [
             {
                 label: "My First dataset",
@@ -89,19 +89,19 @@ $(function () {
             value: 300,
             color: "#a3e1d4",
             highlight: "#1ab394",
-            label: "App"
+            label: "Adultos"
         },
         {
             value: 140,
             color: "#dedede",
             highlight: "#1ab394",
-            label: "Software"
+            label: "Jovenes"
         },
         {
             value: 200,
             color: "#b5b8cf",
             highlight: "#1ab394",
-            label: "Laptop"
+            label: "Niños"
         }
     ];
 
@@ -131,20 +131,14 @@ $(function () {
             value: 300,
             color: "#a3e1d4",
             highlight: "#1ab394",
-            label: "App"
+            label: "Hombres"
         },
         {
-            value: 50,
+            value: 250,
             color: "#dedede",
             highlight: "#1ab394",
-            label: "Software"
+            label: "Mujeres"
         },
-        {
-            value: 100,
-            color: "#b5b8cf",
-            highlight: "#1ab394",
-            label: "Laptop"
-        }
     ];
 
     var doughnutOptions = {
@@ -165,7 +159,7 @@ $(function () {
 
 
     var radarData = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        labels: ["Hipertension", "Diabetes", "Sedentarismo", "Herencia", "Fumador", "Bebedor", "Problemas Renales"],
         datasets: [
             {
                 label: "My First dataset",

@@ -1,0 +1,93 @@
+{% extends "base_tpl.html" %}
+
+{% block titulo %}
+Reportes
+{% endblock %}
+
+
+{% block ruta %}
+Inicio / Reportes / Graficos
+{% endblock %}
+
+{% block contenedor_principal %}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Diabetes vs Hipertension
+                        <small>Guayas</small>
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <canvas id="lineChart" height="140"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Casos Positivos Diabetes/Nefropatia</h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <canvas id="barChart" height="140"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Rango Edad Pacientes</h5>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="text-center">
+                        <canvas id="polarChart" height="140"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Hombres vs Mujeres </h5>
+
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <canvas id="doughnutChart" height="140"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Grafico Radar Incidencia Nefropatia</h5>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<!-- ChartJS-->
+<script src="/static/js/plugins/chartJs/Chart.min.js"></script>
+<script src="/static/js/demo/chartjs-demo.js"></script>
+
+{% endblock %}

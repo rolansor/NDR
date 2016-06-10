@@ -1,0 +1,134 @@
+{% extends "base_tpl.html" %}
+
+{% block titulo %}
+Reportes
+{% endblock %}
+
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="/static/js/plugins/ammap/ammap.css" type="text/css">
+<link rel="stylesheet" href="/static/css/plugins/chosen/chosen.css" type="text/css">
+{% endblock %}
+
+
+{% block ruta %}
+Inicio / Reportes / Geograficos
+{% endblock %}
+
+{% block contenedor_principal %}
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Parametros Busqueda</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="font-noraml">Provincias</label>
+                            <div class="input-group">
+                                <select data-placeholder="Selecciona una Provincia..." class="chosen-select"
+                                        style="width:350px;" tabindex="2">
+                                    <option value="">Seleciona una Provincia</option>
+                                    <option value="1">Guayaquil</option>
+                                    <option value="2">Esmeraldas</option>
+                                    <option value="3">El Oro</option>
+                                    <option value="4">Manabi</option>
+                                    <option value="5">Santa Elena</option>
+                                    <option value="6">Los Rios</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="font-noraml">Enfermedades</label>
+                            <div class="input-group">
+                                <select data-placeholder="Selecciona una Enfermedad..." class="chosen-select"
+                                        style="width:350px;" tabindex="2">
+                                    <option value="">Seleciona una Enfermedad</option>
+                                    <option value="1">Diabetes</option>
+                                    <option value="2">Sobrepeso</option>
+                                    <option value="3">Hipertension</option>
+                                    <option value="4">Nefropatia Diabetica</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="font-noraml">Sexo</label>
+                            <div class="input-group">
+                                <select data-placeholder="Selecciona un Sexo..." class="chosen-select"
+                                        style="width:350px;" tabindex="2">
+                                    <option value="">Seleciona una Sexo</option>
+                                    <option value="1">Masculino</option>
+                                    <option value="2">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Mapa Ecuador</h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="mapdiv" style="background-color:#EEEEEE; height: 500px;"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script src="/static/js/plugins/ammap/ammap.js" type="text/javascript"></script>
+<script src="/static/js/plugins/ammap/maps/js/ecuadorLow.js" type="text/javascript"></script>
+<script src="/static/js/plugins/chosen/chosen.jquery.js"></script>
+<script>
+
+    var map;
+
+    AmCharts.ready(function() {
+        map = new AmCharts.AmMap();
+
+
+        map.balloon.color = "#000000";
+
+        var dataProvider = {
+            mapVar: AmCharts.maps.ecuadorLow,
+            getAreasFromMap:true
+        };
+
+        map.dataProvider = dataProvider;
+
+        map.areasSettings = {
+            autoZoom: true,
+            selectedColor: "#FFF000"
+        };
+
+        map.smallMap = new AmCharts.SmallMap();
+
+        map.write("mapdiv");
+
+    });
+
+    var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Auch, nada coincide!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+
+</script>
+
+{% endblock %}
