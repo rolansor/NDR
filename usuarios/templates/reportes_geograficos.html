@@ -89,46 +89,7 @@ Inicio / Reportes / Geograficos
 <script src="/static/js/plugins/ammap/ammap.js" type="text/javascript"></script>
 <script src="/static/js/plugins/ammap/maps/js/ecuadorLow.js" type="text/javascript"></script>
 <script src="/static/js/plugins/chosen/chosen.jquery.js"></script>
-<script>
+<script src="/static/js/scripts/ecuadorsample.js"></script>
 
-    var map;
-
-    AmCharts.ready(function() {
-        map = new AmCharts.AmMap();
-
-
-        map.balloon.color = "#000000";
-
-        var dataProvider = {
-            mapVar: AmCharts.maps.ecuadorLow,
-            getAreasFromMap:true
-        };
-
-        map.dataProvider = dataProvider;
-
-        map.areasSettings = {
-            autoZoom: true,
-            selectedColor: "#FFF000"
-        };
-
-        map.smallMap = new AmCharts.SmallMap();
-
-        map.write("mapdiv");
-
-    });
-
-    var config = {
-                '.chosen-select'           : {},
-                '.chosen-select-deselect'  : {allow_single_deselect:true},
-                '.chosen-select-no-single' : {disable_search_threshold:10},
-                '.chosen-select-no-results': {no_results_text:'Auch, nada coincide!'},
-                '.chosen-select-width'     : {width:"95%"}
-                }
-    for (var selector in config) {
-        $(selector).chosen(config[selector]);
-    }
-
-
-</script>
 
 {% endblock %}
