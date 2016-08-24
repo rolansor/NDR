@@ -1,8 +1,4 @@
 from __future__ import unicode_literals
-import datetime
-
-from django.db import models
-from django.contrib.auth.models import User
 
 from django.db import models
 
@@ -85,6 +81,31 @@ class Presion(models.Model):
 
     class Meta:
         db_table = 'presion'
+
+
+class Informacion(models.Model):
+    id_informacion = models.AutoField(primary_key=True)
+
+
+    class Meta:
+        db_table = 'informacion_general'
+
+class Localidad(models.Model):
+    id_localidad = models.AutoField(primary_key=True)
+    loc_codigo = models.CharField(max_length=3)
+    loc_descripcion = models.CharField(max_length=150)
+    loc_padre = models.ForeignKey('self', related_name='hijos', null=True,blank=True)
+
+    class Meta:
+        db_table = 'localidad'
+
+class Catalogo(models.Model):
+    id_catalogo = models.AutoField(primary_key=True)
+    cat_descripcion = models.CharField(max_length=150)
+    cat_padre = models.ForeignKey('self', related_name='hijos', null=True, blank=True)
+
+    class Meta:
+        db_table = 'catalogo'
 
 
 class Encuesta(models.Model):
