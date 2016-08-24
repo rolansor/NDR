@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 
 
-@login_required
+##@login_required
 def inicio(request):
     context = {}
     return render(request, 'inicio.html', context)
