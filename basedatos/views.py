@@ -6,34 +6,36 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import *
-from NDR.settings import MEDIA_ROOT
-
 
 @csrf_exempt
 def recibirjson(request):
     context = {}
     if request.method =='POST':
         ##Obtenemos el archivo del post
-        archivo_json = request.FILES["archivo"]
+        archivo = request.FILES["archivo"]
 
         ##Guardamos el archivo en el servidor
-        guardada = save_file(archivo_json)
+        guardada = save_file(archivo)
 
-        ##Transformamos el archivo en json
-        json_encuesta = leer_json(archivo_json)
+        if(str(archivo._get_name()).endswith('.jpg')):
+            return HttpResponse(status=200)
 
-        ##Guardamos en la base el json
-        sincronizada = guardar_encuesta(json_encuesta)
-
-        ##Si ha sido guardada y sincronizada
-        if guardada and sincronizada:
-            return HttpResponse(status=200)
-        elif guardada and not sincronizada:
-            return HttpResponse(status=200)
-        elif guardada and not sincronizada:
-            return HttpResponse(status=200)
         else:
-            return HttpResponse(status=204)
+            ##Transformamos el archivo en json
+            json_encuesta = leer_json(archivo)
+
+            ##Guardamos en la base el json
+            sincronizada = guardar_encuesta(json_encuesta)
+
+            ##Si ha sido guardada y sincronizada
+            if guardada and sincronizada:
+                return HttpResponse(status=200)
+            elif guardada and not sincronizada:
+                return HttpResponse(status=200)
+            elif guardada and not sincronizada:
+                return HttpResponse(status=200)
+            else:
+                return HttpResponse(status=200)
 
     else:
         #temp = leer_json("infog_AB12345.json","/media/informacion_general/")
@@ -132,17 +134,13 @@ def guardarpreparacion(json):
         encuesta.save()
 
 def guardarinformacion(json):
-    objeto = Preparacion()
-    objeto.prep_fecha_creacion = datetime.strptime(json["hora_creacion"], "%A, %B %d %Y, %I:%M %p")
-    objeto.prep_nombres = json["preparacion"][0]["nombres"]
-    objeto.prep_ayunas = stringtobool(json["preparacion"][0]["ayunas"])
-    objeto.prep_lugar = json["preparacion"][0]["lugar_encuesta"]
-    objeto.prep_fecha = datetime.strptime(json["preparacion"][0]["fecha_encuesta"], "%A, %B %d %Y, %I:%M %p")
-    objeto.prep_foto_cons = '%s/preparacion/consentimientos/no_image.png' % MEDIA_ROOT
-    objeto.prep_nombre_resp = ""
-    objeto.prep_cedula_resp = ""
-    objeto.prep_uuid_creado = json["uuid_creado"]
-    objeto.save()
+    objeto = Informacion()
+    objeto.inf_fecha_creacion = datetime.strptime(json["hora_creacion"], "%A, %B %d %Y, %I:%M %p")
+    objeto.inf_nombre_resp = ""
+    objeto.inf_cedula_resp = ""
+    objeto.inf_uuid_creado = json["uuid_creado"]
+    objeto.inf_sexo = json["informacion_general"][0]["sexo"]
+
     codigo_encuesta = json["id_formulario"]
     try:
         encuesta = Encuesta.objects.get(enc_codigo=codigo_encuesta)
@@ -150,13 +148,14 @@ def guardarinformacion(json):
         encuesta = None
 
     if encuesta is not None:
-        encuesta.update(enc_fecha_mod=datetime.now())
-        encuesta.update(fk_preparacion=objeto)
+        encuesta.enc_fecha_mod = datetime.now()
+        encuesta.fk_informacion = objeto
+        encuesta.save()
     if encuesta is None:
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_preparacion = objeto
+        encuesta.fk_informacion = objeto
         encuesta.save()
 
 def guardarmedidas(json):
@@ -225,6 +224,7 @@ def guardarpresion(json):
 
     objeto.pres_prom_min = pres_prom_min
     objeto.pres_prom_max = pres_prom_max
+
     objeto.pres_nombre_resp = ""
     objeto.pres_cedula_resp = ""
     objeto.pres_uuid_creado = json["uuid_creado"]
@@ -237,7 +237,7 @@ def guardarpresion(json):
 
     if encuesta is not None:
         encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_medidas = objeto
+        encuesta.fk_presion = objeto
         encuesta.save()
     if encuesta is None:
         encuesta = Encuesta()
@@ -248,16 +248,25 @@ def guardarpresion(json):
 
 
 def guardarlaboratorio(json):
-    objeto = Preparacion()
-    objeto.prep_fecha_creacion = datetime.strptime(json["hora_creacion"], "%A, %B %d %Y, %I:%M %p")
-    objeto.prep_nombres = json["preparacion"][0]["nombres"]
-    objeto.prep_ayunas = stringtobool(json["preparacion"][0]["ayunas"])
-    objeto.prep_lugar = json["preparacion"][0]["lugar_encuesta"]
-    objeto.prep_fecha = datetime.strptime(json["preparacion"][0]["fecha_encuesta"], "%A, %B %d %Y, %I:%M %p")
-    objeto.prep_foto_cons = '%s/preparacion/consentimientos/no_image.png' % MEDIA_ROOT
-    objeto.prep_nombre_resp = ""
-    objeto.prep_cedula_resp = ""
-    objeto.prep_uuid_creado = json["uuid_creado"]
+    objeto = Laboratorio()
+    objeto.lab_fecha_creacion = datetime.strptime(json["hora_creacion"], "%A, %B %d %Y, %I:%M %p")
+    objeto.lab_nombres = json["resultados"][0]["nombres"]
+    gluco_min = int(json["resultados"][0]["glucosa_min"])
+    gluco_max = int(json["resultados"][0]["glucosa_max"])
+    creatinina = Decimal(json["resultados"][0]["creatinina"])
+    microalbum = Decimal(json["resultados"][0]["microalbuminuria"])
+    hemo_glico = Decimal(json["resultados"][0]["hba1c"])
+
+    objeto.lab_glucosa_min = gluco_min
+    objeto.lab_glucosa_max = gluco_max
+    objeto.lab_creatinina = creatinina
+    objeto.lab_microalbum = microalbum
+    objeto.lab_hemo_glico = hemo_glico
+    objeto.lab_filtrado = 5.22
+
+    objeto.lab_nombre_resp = ""
+    objeto.lab_cedula_resp = ""
+    objeto.lab_uuid_creado = json["uuid_creado"]
     objeto.save()
     codigo_encuesta = json["id_formulario"]
     try:
@@ -266,13 +275,14 @@ def guardarlaboratorio(json):
         encuesta = None
 
     if encuesta is not None:
-        encuesta.update(enc_fecha_mod=datetime.now())
-        encuesta.update(fk_preparacion=objeto)
+        encuesta.enc_fecha_mod = datetime.now()
+        encuesta.fk_laboratorio = objeto
+        encuesta.save()
     if encuesta is None:
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_preparacion = objeto
+        encuesta.fk_laboratorio = objeto
         encuesta.save()
 
 

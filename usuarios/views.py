@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 
 
 ##@login_required
+from basedatos.models import *
+
+
 def inicio(request):
     context = {}
     return render(request, 'inicio.html', context)
@@ -42,4 +45,6 @@ def reportes_graficos(request):
 
 def reportes_fisicos(request):
     context = {}
+    encuestas = Encuesta.objects.all()
+    context['encuestas'] = encuestas
     return render(request, 'reportes_fisicos.html', context)
