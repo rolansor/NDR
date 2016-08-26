@@ -2,8 +2,24 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-def definir_ruta_imagen(self, filename):
-    return "cons_informados/%s" % (filename)
+from NDR.settings import MEDIA_ROOT
+
+class Localidad(models.Model):
+    id_localidad = models.AutoField(primary_key=True)
+    loc_codigo = models.CharField(max_length=3)
+    loc_descripcion = models.CharField(max_length=150)
+    loc_padre = models.ForeignKey('self', related_name='hijos', null=True,blank=True)
+
+    class Meta:
+        db_table = 'localidad'
+
+class Catalogo(models.Model):
+    id_catalogo = models.AutoField(primary_key=True)
+    cat_descripcion = models.CharField(max_length=150)
+    cat_padre = models.ForeignKey('self', related_name='hijos', null=True, blank=True)
+
+    class Meta:
+        db_table = 'catalogo'
 
 class Preparacion(models.Model):
     id_preparacion = models.AutoField(primary_key=True)
@@ -12,8 +28,7 @@ class Preparacion(models.Model):
     prep_ayunas = models.BooleanField(default=False)
     prep_lugar = models.CharField(max_length=150)
     prep_fecha = models.DateField()
-    prep_foto_cons = models.ImageField(upload_to=definir_ruta_imagen, default='noimagen.png')
-
+    prep_foto_cons = models.ImageField(upload_to='preparacion/consentimientos', null=True, blank=True)
     #Campos de auditoria:
     prep_nombre_resp = models.CharField(max_length=150)
     prep_cedula_resp = models.CharField(max_length=10)
@@ -88,67 +103,67 @@ class Informacion(models.Model):
     inf_fecha_creacion = models.DateTimeField()
     inf_nombres = models.CharField(max_length=150)
     inf_apellidos = models.CharField(max_length=150)
-    inf_sexo = models.CharField(max_length=150)
-    inf_fecha_nac = models.CharField(max_length=150)
-    inf_telefono = models.CharField(max_length=150)
-    inf_est_civil = models.CharField(max_length=150)
-    inf_etnia = models.CharField(max_length=150)
-    inf_canton = models.CharField(max_length=150)
-    inf_provincia = models.CharField(max_length=150)
-    inf_vivienda = models.CharField(max_length=150)
-    inf_direccion = models.CharField(max_length=150)
-    inf_personas = models.CharField(max_length=150)
-    inf_agua = models.CharField(max_length=150)
-    inf_cloacas = models.CharField(max_length=150)
-    inf_cbzfam = models.CharField(max_length=150)
-    inf_ingresos = models.CharField(max_length=150)
-    inf_llegafin = models.CharField(max_length=150)
-    inf_ocupacion = models.CharField(max_length=150)
+    inf_sexo = models.ForeignKey(Catalogo, related_name="encuestado_sexo", limit_choices_to={'cat_padre': 1})
+    inf_fecha_nac = models.DateTimeField()
+    inf_telefono = models.CharField(max_length=20)
+    inf_est_civil = models.ForeignKey(Catalogo, related_name="encuestado_estcivil", limit_choices_to={'cat_padre': 4})
+    inf_etnia = models.ForeignKey(Catalogo, related_name="encuestado_etnia", limit_choices_to={'cat_padre': 4})
+    inf_canton = models.ForeignKey(Localidad, related_name="encuestado_canton")
+    inf_provincia = models.ForeignKey(Localidad, related_name="encuestado_provincia")
+    inf_vivienda = models.ForeignKey(Catalogo, related_name="encuestado_vivienda", limit_choices_to={'cat_padre': 4})
+    inf_direccion = models.CharField(max_length=300)
+    inf_personas = models.PositiveSmallIntegerField()
+    inf_agua = models.ForeignKey(Catalogo, related_name="encuestado_agua", limit_choices_to={'cat_padre': 4})
+    inf_cloacas = models.BooleanField()
+    inf_cbzfam = models.BooleanField()
+    inf_ingresos = models.BooleanField()
+    inf_llegafin = models.BooleanField()
+    inf_ocupacion = models.ForeignKey(Catalogo, related_name="encuestado_ocupacion", limit_choices_to={'cat_padre': 4})
     inf_trabajo = models.CharField(max_length=150)
-    inf_estudios = models.CharField(max_length=150)
-    inf_seguro = models.CharField(max_length=150)
+    inf_estudios = models.ForeignKey(Catalogo, related_name="encuestado_estudios", limit_choices_to={'cat_padre': 4})
+    inf_seguro = models.BooleanField()
     inf_det_seguro = models.CharField(max_length=150)
-    inf_chequeos = models.CharField(max_length=150)
-    inf_mes_chequeos = models.CharField(max_length=150)
-    inf_vec_chequeos = models.CharField(max_length=150)
-    inf_diabetes = models.CharField(max_length=150)
-    inf_tiempo_diab = models.CharField(max_length=150)
-    inf_presion = models.CharField(max_length=150)
-    inf_enf_renal = models.CharField(max_length=150)
+    inf_chequeos = models.BooleanField()
+    inf_mes_chequeos = models.PositiveSmallIntegerField()
+    inf_vec_chequeos = models.PositiveSmallIntegerField()
+    inf_diabetes = models.BooleanField()
+    inf_tiempo_diab = models.PositiveSmallIntegerField()
+    inf_presion = models.BooleanField()
+    inf_enf_renal = models.BooleanField()
     inf_det_renal = models.CharField(max_length=150)
-    inf_otra_enf = models.CharField(max_length=150)
+    inf_otra_enf = models.BooleanField()
     inf_det_enf = models.CharField(max_length=150)
-    inf_insulina = models.CharField(max_length=150)
-    inf_hipoglucemias = models.CharField(max_length=150)
+    inf_insulina = models.BooleanField()
+    inf_hipoglucemias = models.BooleanField()
     inf_det_hipogluce = models.CharField(max_length=150)
-    inf_razon_1 = models.CharField(max_length=150)
-    inf_razon_2 = models.CharField(max_length=150)
-    inf_razon_3 = models.CharField(max_length=150)
-    inf_razon_4 = models.CharField(max_length=150)
-    inf_med_presion = models.CharField(max_length=150)
+    inf_razon_1 = models.BooleanField()
+    inf_razon_2 = models.BooleanField()
+    inf_razon_3 = models.BooleanField()
+    inf_razon_4 = models.BooleanField()
+    inf_med_presion = models.BooleanField()
     inf_det_med_pre = models.CharField(max_length=150)
-    inf_analgesicos = models.CharField(max_length=150)
+    inf_analgesicos = models.BooleanField()
     inf_det_analgesicos = models.CharField(max_length=150)
-    inf_med_otros = models.CharField(max_length=150)
+    inf_med_otros = models.BooleanField()
     inf_det_med_otros = models.CharField(max_length=150)
-    inf_med_1 = models.CharField(max_length=150)
-    inf_med_2 = models.CharField(max_length=150)
-    inf_med_3 = models.CharField(max_length=150)
-    inf_glucosa = models.CharField(max_length=150)
-    inf_dia_familia = models.CharField(max_length=150)
-    inf_dia_parientes = models.CharField(max_length=150)
-    inf_ant_embarazo = models.CharField(max_length=150)
-    inf_peso_hijos = models.CharField(max_length=150)
-    inf_pre_familia = models.CharField(max_length=150)
-    inf_renal_familia = models.CharField(max_length=150)
+    inf_med_1 = models.BooleanField()
+    inf_med_2 = models.BooleanField()
+    inf_med_3 = models.BooleanField()
+    inf_glucosa = models.BooleanField()
+    inf_dia_familia = models.BooleanField()
+    inf_dia_parientes = models.BooleanField()
+    inf_ant_embarazo = models.BooleanField()
+    inf_peso_hijos = models.BooleanField()
+    inf_pre_familia = models.BooleanField()
+    inf_renal_familia = models.BooleanField()
     inf_det_renal_fam = models.CharField(max_length=150)
-    inf_tabaco = models.CharField(max_length=150)
-    inf_det_tabaco = models.CharField(max_length=150)
-    inf_alcohol = models.CharField(max_length=150)
-    inf_det_alcohol = models.CharField(max_length=150)
-    inf_otros_hab = models.CharField(max_length=150)
+    inf_tabaco = models.BooleanField()
+    inf_det_tabaco = models.PositiveSmallIntegerField()
+    inf_alcohol = models.BooleanField()
+    inf_det_alcohol = models.PositiveSmallIntegerField()
+    inf_otros_hab = models.BooleanField()
     inf_det_otro_hab = models.CharField(max_length=150)
-    inf_ejercicios = models.CharField(max_length=150)
+    inf_ejercicios = models.ForeignKey(Catalogo, related_name="encuestado_ejercicios", limit_choices_to={'cat_padre': 4})
 
     # Campos de auditoria:
     inf_nombre_resp = models.CharField(max_length=150)
@@ -158,24 +173,6 @@ class Informacion(models.Model):
 
     class Meta:
         db_table = 'informacion_general'
-
-class Localidad(models.Model):
-    id_localidad = models.AutoField(primary_key=True)
-    loc_codigo = models.CharField(max_length=3)
-    loc_descripcion = models.CharField(max_length=150)
-    loc_padre = models.ForeignKey('self', related_name='hijos', null=True,blank=True)
-
-    class Meta:
-        db_table = 'localidad'
-
-class Catalogo(models.Model):
-    id_catalogo = models.AutoField(primary_key=True)
-    cat_descripcion = models.CharField(max_length=150)
-    cat_padre = models.ForeignKey('self', related_name='hijos', null=True, blank=True)
-
-    class Meta:
-        db_table = 'catalogo'
-
 
 class Encuesta(models.Model):
     id_encuesta = models.AutoField(primary_key=True)
