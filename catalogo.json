@@ -1,0 +1,370 @@
+[
+  {
+    "model": "basedatos.catalogo",
+    "pk": 1,
+    "fields": {
+      "cat_descripcion": "SEXO",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 2,
+    "fields": {
+      "cat_descripcion": "ESTADO CIVIL",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 3,
+    "fields": {
+      "cat_descripcion": "ETNIA",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 4,
+    "fields": {
+      "cat_descripcion": "VIVIENDA",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 5,
+    "fields": {
+      "cat_descripcion": "AGUA",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 6,
+    "fields": {
+      "cat_descripcion": "OCUPACION",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 7,
+    "fields": {
+      "cat_descripcion": "ESTUDIOS",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 8,
+    "fields": {
+      "cat_descripcion": "EJERCICIOS",
+      "cat_padre": null
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 9,
+    "fields": {
+      "cat_descripcion": "MASCULINO",
+      "cat_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 10,
+    "fields": {
+      "cat_descripcion": "FEMENINO",
+      "cat_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 11,
+    "fields": {
+      "cat_descripcion": "SOLTERO",
+      "cat_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 12,
+    "fields": {
+      "cat_descripcion": "CASADO",
+      "cat_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 13,
+    "fields": {
+      "cat_descripcion": "DIVORCIADO",
+      "cat_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 14,
+    "fields": {
+      "cat_descripcion": "UNION LIBRE",
+      "cat_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 15,
+    "fields": {
+      "cat_descripcion": "VIUDO",
+      "cat_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 16,
+    "fields": {
+      "cat_descripcion": "INDIGENA",
+      "cat_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 17,
+    "fields": {
+      "cat_descripcion": "AFROECUATORIANA",
+      "cat_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 18,
+    "fields": {
+      "cat_descripcion": "MONTUBIA",
+      "cat_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 19,
+    "fields": {
+      "cat_descripcion": "MESTIZA",
+      "cat_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 20,
+    "fields": {
+      "cat_descripcion": "BLANCA",
+      "cat_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 21,
+    "fields": {
+      "cat_descripcion": "CIUDAD",
+      "cat_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 22,
+    "fields": {
+      "cat_descripcion": "CAMPO",
+      "cat_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 23,
+    "fields": {
+      "cat_descripcion": "ALREDEDOR DE LA CIUDAD",
+      "cat_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 24,
+    "fields": {
+      "cat_descripcion": "INTUBADA",
+      "cat_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 25,
+    "fields": {
+      "cat_descripcion": "CISTERNA",
+      "cat_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 26,
+    "fields": {
+      "cat_descripcion": "TANQUERO",
+      "cat_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 27,
+    "fields": {
+      "cat_descripcion": "TANQUEO",
+      "cat_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 28,
+    "fields": {
+      "cat_descripcion": "EMPLEADO",
+      "cat_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 29,
+    "fields": {
+      "cat_descripcion": "CUENTA PROPIA",
+      "cat_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 30,
+    "fields": {
+      "cat_descripcion": "NO TRABAJA",
+      "cat_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 31,
+    "fields": {
+      "cat_descripcion": "ESTUDIA",
+      "cat_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 32,
+    "fields": {
+      "cat_descripcion": "JUBILADO",
+      "cat_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 33,
+    "fields": {
+      "cat_descripcion": "AMA DE CASA",
+      "cat_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 34,
+    "fields": {
+      "cat_descripcion": "ANALFABETO",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 35,
+    "fields": {
+      "cat_descripcion": "PRIMARIOS COMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 36,
+    "fields": {
+      "cat_descripcion": "PRIMARIOS INCOMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 37,
+    "fields": {
+      "cat_descripcion": "SECUNDARIOS COMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 38,
+    "fields": {
+      "cat_descripcion": "SECUNDARIOS INCOMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 39,
+    "fields": {
+      "cat_descripcion": "TERCIARIOS COMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 40,
+    "fields": {
+      "cat_descripcion": "TERCIARIOS INCOMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 41,
+    "fields": {
+      "cat_descripcion": "UNIVERSITARIOS COMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 42,
+    "fields": {
+      "cat_descripcion": "UNIVERSITARIOS INCOMPLETOS",
+      "cat_padre": 7
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 43,
+    "fields": {
+      "cat_descripcion": "NO HAGO ACTIVIDAD FISICA",
+      "cat_padre": 8
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 44,
+    "fields": {
+      "cat_descripcion": "SOLO HAGO EJERCICIOS EN EL TIEMPO LIBRE",
+      "cat_padre": 8
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 45,
+    "fields": {
+      "cat_descripcion": "HAGO EJERCICIOS MAS DE 3 VECES POR SEMANA",
+      "cat_padre": 8
+    }
+  },
+  {
+    "model": "basedatos.catalogo",
+    "pk": 46,
+    "fields": {
+      "cat_descripcion": "HAGO EJERCICIOS TODOS LOS DIAS",
+      "cat_padre": 8
+    }
+  }
+]

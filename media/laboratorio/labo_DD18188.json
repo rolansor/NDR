@@ -1,0 +1,16 @@
+{
+  "id_formulario": "DD18188",
+  "tipo_formulario": "Laboratorio",
+  "uuid_creado": "352910072902681",
+  "hora_creacion": "Thu Aug 25 22:03:24 GMT-05:00 2016",
+  "Resultados": [
+    {
+      "glucosa_max": "132",
+      "creatinina": "13",
+      "nombres": "ANDRES EPPITO ALALLALA",
+      "microalbuminuria": "13",
+      "hba1c": "13",
+      "glucosa_min": "132"
+    }
+  ]
+}

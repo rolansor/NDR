@@ -1,0 +1,821 @@
+[
+  {
+    "model": "basedatos.localidad",
+    "pk": 1,
+    "fields": {
+      "loc_codigo": "ESM",
+      "loc_descripcion": "ESMERALDAS",
+      "loc_padre": null
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 2,
+    "fields": {
+      "loc_codigo": "MAN",
+      "loc_descripcion": "MANABI",
+      "loc_padre": null
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 3,
+    "fields": {
+      "loc_codigo": "GUA",
+      "loc_descripcion": "GUAYAS",
+      "loc_padre": null
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 4,
+    "fields": {
+      "loc_codigo": "RIO",
+      "loc_descripcion": "LOS RIOS",
+      "loc_padre": null
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 5,
+    "fields": {
+      "loc_codigo": "ORO",
+      "loc_descripcion": "EL ORO",
+      "loc_padre": null
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 6,
+    "fields": {
+      "loc_codigo": "SLN",
+      "loc_descripcion": "SANTA ELENA",
+      "loc_padre": null
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 7,
+    "fields": {
+      "loc_codigo": "ESM",
+      "loc_descripcion": "ESMERALDAS",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 8,
+    "fields": {
+      "loc_codigo": "ELA",
+      "loc_descripcion": "ELOY ALFARO",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 9,
+    "fields": {
+      "loc_codigo": "MUS",
+      "loc_descripcion": "MUISNE",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 10,
+    "fields": {
+      "loc_codigo": "QUI",
+      "loc_descripcion": "QUININDE",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 11,
+    "fields": {
+      "loc_codigo": "SLZ",
+      "loc_descripcion": "SAN LORENZO",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 12,
+    "fields": {
+      "loc_codigo": "ATC",
+      "loc_descripcion": "ATACAMES",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 13,
+    "fields": {
+      "loc_codigo": "RVE",
+      "loc_descripcion": "RIO VERDE",
+      "loc_padre": 1
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 14,
+    "fields": {
+      "loc_codigo": "BOL",
+      "loc_descripcion": "BOLIVAR",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 15,
+    "fields": {
+      "loc_codigo": "CHN",
+      "loc_descripcion": "CHONE",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 16,
+    "fields": {
+      "loc_codigo": "ELC",
+      "loc_descripcion": "EL CARMEN",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 17,
+    "fields": {
+      "loc_codigo": "FLV",
+      "loc_descripcion": "FLAVIO ALFARO",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 18,
+    "fields": {
+      "loc_codigo": "JMA",
+      "loc_descripcion": "JAMA",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 19,
+    "fields": {
+      "loc_codigo": "JAR",
+      "loc_descripcion": "JARAMIJO",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 20,
+    "fields": {
+      "loc_codigo": "JIP",
+      "loc_descripcion": "JIPIJAPA",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 21,
+    "fields": {
+      "loc_codigo": "JUN",
+      "loc_descripcion": "JUNIN",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 22,
+    "fields": {
+      "loc_codigo": "MAN",
+      "loc_descripcion": "MANTA",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 23,
+    "fields": {
+      "loc_codigo": "MON",
+      "loc_descripcion": "MONTECRISTI",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 24,
+    "fields": {
+      "loc_codigo": "OLM",
+      "loc_descripcion": "OLMEDO",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 25,
+    "fields": {
+      "loc_codigo": "PAJ",
+      "loc_descripcion": "PAJAN",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 26,
+    "fields": {
+      "loc_codigo": "PED",
+      "loc_descripcion": "PEDERNALES",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 27,
+    "fields": {
+      "loc_codigo": "PIC",
+      "loc_descripcion": "PICHINCHA",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 28,
+    "fields": {
+      "loc_codigo": "POR",
+      "loc_descripcion": "PORTOVIEJO",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 29,
+    "fields": {
+      "loc_codigo": "PLZ",
+      "loc_descripcion": "PUERTO LOPEZ",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 30,
+    "fields": {
+      "loc_codigo": "RCF",
+      "loc_descripcion": "ROCAFUERTE",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 31,
+    "fields": {
+      "loc_codigo": "SVC",
+      "loc_descripcion": "SAN VICENTE",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 32,
+    "fields": {
+      "loc_codigo": "STA",
+      "loc_descripcion": "SANTA ANA",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 33,
+    "fields": {
+      "loc_codigo": "SCR",
+      "loc_descripcion": "SUCRE",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 34,
+    "fields": {
+      "loc_codigo": "TSG",
+      "loc_descripcion": "TOSAGUA",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 35,
+    "fields": {
+      "loc_codigo": "VAY",
+      "loc_descripcion": "24 DE MAYO",
+      "loc_padre": 2
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 36,
+    "fields": {
+      "loc_codigo": "BAL",
+      "loc_descripcion": "BALAO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 37,
+    "fields": {
+      "loc_codigo": "BAZ",
+      "loc_descripcion": "BALZAR",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 38,
+    "fields": {
+      "loc_codigo": "BMO",
+      "loc_descripcion": "BAQUERIZO MORENO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 39,
+    "fields": {
+      "loc_codigo": "COL",
+      "loc_descripcion": "COLIMES",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 40,
+    "fields": {
+      "loc_codigo": "CMM",
+      "loc_descripcion": "CORONEL MARCELINO MARIDUE\u00d1AS",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 41,
+    "fields": {
+      "loc_codigo": "DAU",
+      "loc_descripcion": "DAULE",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 42,
+    "fields": {
+      "loc_codigo": "DUR",
+      "loc_descripcion": "DURAN",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 43,
+    "fields": {
+      "loc_codigo": "EMP",
+      "loc_descripcion": "EL EMPALME",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 44,
+    "fields": {
+      "loc_codigo": "ELT",
+      "loc_descripcion": "EL TRIUNFO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 45,
+    "fields": {
+      "loc_codigo": "GAE",
+      "loc_descripcion": "GENERAL ANTONIO ELIZALDE",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 46,
+    "fields": {
+      "loc_codigo": "GUA",
+      "loc_descripcion": "GUAYAQUIL",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 47,
+    "fields": {
+      "loc_codigo": "IAY",
+      "loc_descripcion": "ISIDRO AYORA",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 48,
+    "fields": {
+      "loc_codigo": "LMS",
+      "loc_descripcion": "LOMAS DE SARGENTILLO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 49,
+    "fields": {
+      "loc_codigo": "MIL",
+      "loc_descripcion": "MILAGRO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 50,
+    "fields": {
+      "loc_codigo": "NAR",
+      "loc_descripcion": "NARANJAL",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 51,
+    "fields": {
+      "loc_codigo": "NAJ",
+      "loc_descripcion": "NARANJITO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 52,
+    "fields": {
+      "loc_codigo": "NOB",
+      "loc_descripcion": "NOBOL",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 53,
+    "fields": {
+      "loc_codigo": "PAL",
+      "loc_descripcion": "PALESTINA",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 54,
+    "fields": {
+      "loc_codigo": "PED",
+      "loc_descripcion": "PEDRO CARBO",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 55,
+    "fields": {
+      "loc_codigo": "PLA",
+      "loc_descripcion": "PLAYAS",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 56,
+    "fields": {
+      "loc_codigo": "SAL",
+      "loc_descripcion": "SALITRE",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 57,
+    "fields": {
+      "loc_codigo": "SAM",
+      "loc_descripcion": "SAMBORONDON",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 58,
+    "fields": {
+      "loc_codigo": "SJY",
+      "loc_descripcion": "SAN JACINTO DE YAGUACHI",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 59,
+    "fields": {
+      "loc_codigo": "STL",
+      "loc_descripcion": "SANTA LUCIA",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 60,
+    "fields": {
+      "loc_codigo": "SMB",
+      "loc_descripcion": "SIMON BOLIVAR",
+      "loc_padre": 3
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 61,
+    "fields": {
+      "loc_codigo": "BAB",
+      "loc_descripcion": "BABA",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 62,
+    "fields": {
+      "loc_codigo": "BAH",
+      "loc_descripcion": "BABAHOYO",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 63,
+    "fields": {
+      "loc_codigo": "BUE",
+      "loc_descripcion": "BUENA FE",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 64,
+    "fields": {
+      "loc_codigo": "CAT",
+      "loc_descripcion": "CATARAMA",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 65,
+    "fields": {
+      "loc_codigo": "MOC",
+      "loc_descripcion": "MOCACHE",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 66,
+    "fields": {
+      "loc_codigo": "MON",
+      "loc_descripcion": "MONTALVO",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 67,
+    "fields": {
+      "loc_codigo": "PAL",
+      "loc_descripcion": "PALENQUE",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 68,
+    "fields": {
+      "loc_codigo": "PBV",
+      "loc_descripcion": "PUEBLO VIEJO",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 69,
+    "fields": {
+      "loc_codigo": "QVD",
+      "loc_descripcion": "QUEVEDO",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 70,
+    "fields": {
+      "loc_codigo": "QSL",
+      "loc_descripcion": "QUINSALOMA",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 71,
+    "fields": {
+      "loc_codigo": "URD",
+      "loc_descripcion": "URDANETA",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 72,
+    "fields": {
+      "loc_codigo": "VAL",
+      "loc_descripcion": "VALENCIA",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 73,
+    "fields": {
+      "loc_codigo": "VEN",
+      "loc_descripcion": "VENTANAS",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 74,
+    "fields": {
+      "loc_codigo": "VIN",
+      "loc_descripcion": "VINCES",
+      "loc_padre": 4
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 75,
+    "fields": {
+      "loc_codigo": "ARE",
+      "loc_descripcion": "ARENILLAS",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 76,
+    "fields": {
+      "loc_codigo": "ATA",
+      "loc_descripcion": "ATAHUALPA",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 77,
+    "fields": {
+      "loc_codigo": "BLS",
+      "loc_descripcion": "BALSAS",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 78,
+    "fields": {
+      "loc_codigo": "CHL",
+      "loc_descripcion": "CHILLA",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 79,
+    "fields": {
+      "loc_codigo": "GUA",
+      "loc_descripcion": "EL GUABO",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 80,
+    "fields": {
+      "loc_codigo": "HUA",
+      "loc_descripcion": "HUAQUILLAS",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 81,
+    "fields": {
+      "loc_codigo": "LAJ",
+      "loc_descripcion": "LAS LAJAS",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 82,
+    "fields": {
+      "loc_codigo": "MCH",
+      "loc_descripcion": "MACHALA",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 83,
+    "fields": {
+      "loc_codigo": "MAR",
+      "loc_descripcion": "MARCABELI",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 84,
+    "fields": {
+      "loc_codigo": "PAS",
+      "loc_descripcion": "PASAJE",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 85,
+    "fields": {
+      "loc_codigo": "PI\u00d1",
+      "loc_descripcion": "PI\u00d1AS",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 86,
+    "fields": {
+      "loc_codigo": "POR",
+      "loc_descripcion": "PORTOVELO",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 87,
+    "fields": {
+      "loc_codigo": "STR",
+      "loc_descripcion": "SANTA ROSA",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 88,
+    "fields": {
+      "loc_codigo": "ZAR",
+      "loc_descripcion": "ZARUMA",
+      "loc_padre": 5
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 89,
+    "fields": {
+      "loc_codigo": "LIB",
+      "loc_descripcion": "LIBERTAD",
+      "loc_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 90,
+    "fields": {
+      "loc_codigo": "SAL",
+      "loc_descripcion": "SALINAS",
+      "loc_padre": 6
+    }
+  },
+  {
+    "model": "basedatos.localidad",
+    "pk": 91,
+    "fields": {
+      "loc_codigo": "STL",
+      "loc_descripcion": "SANTA ELENA",
+      "loc_padre": 6
+    }
+  }
+]
