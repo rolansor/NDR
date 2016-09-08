@@ -5,7 +5,7 @@ from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import *
+from models import *
 
 @csrf_exempt
 def recibirjson(request):
@@ -90,7 +90,8 @@ def guardar_encuesta(json):
         guardarpreparacion(json)
 
     elif tipo_formulario == "Informacion_General":
-        guardarinformacion(json)
+        #guardarinformacion(json)
+        i = 0
 
     elif tipo_formulario == "Medidas":
         guardarmedidas(json)
@@ -112,8 +113,8 @@ def guardarpreparacion(json):
     objeto.prep_lugar = json["preparacion"][0]["lugar_encuesta"]
     objeto.prep_fecha = datetime.strptime(json["preparacion"][0]["fecha_encuesta"], "%A, %B %d %Y, %I:%M %p")
     objeto.prep_foto_cons = '%s/preparacion/consentimientos/no_image.png' % MEDIA_ROOT
-    objeto.prep_nombre_resp = ""
-    objeto.prep_cedula_resp = ""
+    objeto.prep_nombre_resp = json["nombres_encuestador"]
+    objeto.prep_cedula_resp = json["cedula_encuestador"]
     objeto.prep_uuid_creado = json["uuid_creado"]
     objeto.save()
     codigo_encuesta = json["id_formulario"]
@@ -134,12 +135,90 @@ def guardarpreparacion(json):
         encuesta.save()
 
 def guardarinformacion(json):
+
     objeto = Informacion()
     objeto.inf_fecha_creacion = datetime.strptime(json["hora_creacion"], "%A, %B %d %Y, %I:%M %p")
-    objeto.inf_nombre_resp = ""
-    objeto.inf_cedula_resp = ""
+    objeto.inf_nombre_resp = json["nombres_encuestador"]
+    objeto.inf_cedula_resp = json["cedula_encuestador"]
     objeto.inf_uuid_creado = json["uuid_creado"]
+
+    #Informacion general.
     objeto.inf_sexo = json["informacion_general"][0]["sexo"]
+    objeto.inf_sexo = json["informacion_general"][0]["etnia"]
+    objeto.inf_sexo = json["informacion_general"][0]["nombres"]
+    objeto.inf_sexo = json["informacion_general"][0]["estado_civil"]
+    objeto.inf_sexo = json["informacion_general"][0]["apellidos"]
+    objeto.inf_sexo = json["informacion_general"][0]["telefono"]
+    objeto.inf_sexo = json["informacion_general"][0]["fecha_nac"]
+
+    #Vivienda
+    objeto.inf_sexo = json["vivienda"][0]["cloacas"]
+    objeto.inf_sexo = json["vivienda"][0]["agua"]
+    objeto.inf_sexo = json["vivienda"][0]["vivienda"]
+    objeto.inf_sexo = json["vivienda"][0]["canton"]
+    objeto.inf_sexo = json["vivienda"][0]["personas"]
+    objeto.inf_sexo = json["vivienda"][0]["direccion"]
+    objeto.inf_sexo = json["vivienda"][0]["provincia"]
+
+
+    #Economia Familiar
+    objeto.inf_sexo = json["economia_familiar"][0]["trabajo"]
+    objeto.inf_sexo = json["economia_familiar"][0]["llegafin"]
+    objeto.inf_sexo = json["economia_familiar"][0]["ingresos"]
+    objeto.inf_sexo = json["economia_familiar"][0]["ocupacion"]
+    objeto.inf_sexo = json["economia_familiar"][0]["cbzfam"]
+    objeto.inf_sexo = json["economia_familiar"][0]["estudios"]
+
+    #Salud
+    objeto.inf_sexo = json["salud"][0]["enfermedad"]
+    objeto.inf_sexo = json["salud"][0]["det_tmp_diabetes"]
+    objeto.inf_sexo = json["salud"][0]["det_enfermedad"]
+    objeto.inf_sexo = json["salud"][0]["det_renal"]
+    objeto.inf_sexo = json["salud"][0]["renal"]
+    objeto.inf_sexo = json["salud"][0]["chequeos"]
+    objeto.inf_sexo = json["salud"][0]["det_vec_chequeo"]
+    objeto.inf_sexo = json["salud"][0]["presion"]
+    objeto.inf_sexo = json["salud"][0]["diabetes"]
+    objeto.inf_sexo = json["salud"][0]["det_mes_chequeo"]
+    objeto.inf_sexo = json["salud"][0]["seguro"]
+    objeto.inf_sexo = json["salud"][0]["det_seguro"]
+
+    #Medicamentos
+    objeto.inf_sexo = json["medicamentos"][0]["razon_4"]
+    objeto.inf_sexo = json["medicamentos"][0]["det_medicina_presion"]
+    objeto.inf_sexo = json["medicamentos"][0]["med_3"]
+    objeto.inf_sexo = json["medicamentos"][0]["med_1"]
+    objeto.inf_sexo = json["medicamentos"][0]["det_medicinas_otros"]
+    objeto.inf_sexo = json["medicamentos"][0]["razon_1"]
+    objeto.inf_sexo = json["medicamentos"][0]["med_2"]
+    objeto.inf_sexo = json["medicamentos"][0]["analgesicos"]
+    objeto.inf_sexo = json["medicamentos"][0]["hipoglucemias"]
+    objeto.inf_sexo = json["medicamentos"][0]["det_hipoglucemias"]
+    objeto.inf_sexo = json["medicamentos"][0]["razon_3"]
+    objeto.inf_sexo = json["medicamentos"][0]["razon_2"]
+    objeto.inf_sexo = json["medicamentos"][0]["det_analgesicos"]
+    objeto.inf_sexo = json["medicamentos"][0]["medicina_presion"]
+    objeto.inf_sexo = json["medicamentos"][0]["insulina"]
+    objeto.inf_sexo = json["medicamentos"][0]["medicinas_otros"]
+
+    #Antecedentes
+    objeto.inf_sexo = json["antecedentes"][0]["det_ant_enf_renal"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_embarazo"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_renal"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_familia"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_glucosa"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_pso_hijos"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_parientes"]
+    objeto.inf_sexo = json["antecedentes"][0]["ant_presion"]
+
+    #Habitos
+    objeto.inf_sexo = json["habitos"][0]["otros"]
+    objeto.inf_sexo = json["habitos"][0]["tabaco"]
+    objeto.inf_sexo = json["habitos"][0]["det_frc_alcohol"]
+    objeto.inf_sexo = json["habitos"][0]["alcohol"]
+    objeto.inf_sexo = json["habitos"][0]["det_frc_tabaco"]
+    objeto.inf_sexo = json["habitos"][0]["ejercicios"]
+    objeto.inf_sexo = json["habitos"][0]["det_frc_otros"]
 
     codigo_encuesta = json["id_formulario"]
     try:
@@ -157,6 +236,7 @@ def guardarinformacion(json):
         encuesta.enc_fecha_mod = datetime.now()
         encuesta.fk_informacion = objeto
         encuesta.save()
+
 
 def guardarmedidas(json):
     objeto = Medidas()
@@ -177,8 +257,8 @@ def guardarmedidas(json):
     objeto.med_indice_cc = cc
     objeto.med_peso_sal = peso_sal
 
-    objeto.med_nombre_resp = ""
-    objeto.med_cedula_resp = ""
+    objeto.med_nombre_resp = json["nombres_encuestador"]
+    objeto.med_cedula_resp = json["cedula_encuestador"]
     objeto.med_uuid_creado = json["uuid_creado"]
     objeto.save()
     codigo_encuesta = json["id_formulario"]
@@ -225,8 +305,8 @@ def guardarpresion(json):
     objeto.pres_prom_min = pres_prom_min
     objeto.pres_prom_max = pres_prom_max
 
-    objeto.pres_nombre_resp = ""
-    objeto.pres_cedula_resp = ""
+    objeto.pres_nombre_resp = json["nombres_encuestador"]
+    objeto.pres_cedula_resp = json["cedula_encuestador"]
     objeto.pres_uuid_creado = json["uuid_creado"]
     objeto.save()
     codigo_encuesta = json["id_formulario"]
@@ -264,8 +344,8 @@ def guardarlaboratorio(json):
     objeto.lab_hemo_glico = hemo_glico
     objeto.lab_filtrado = 5.22
 
-    objeto.lab_nombre_resp = ""
-    objeto.lab_cedula_resp = ""
+    objeto.lab_nombre_resp = json["nombres_encuestador"]
+    objeto.lab_cedula_resp = json["cedula_encuestador"]
     objeto.lab_uuid_creado = json["uuid_creado"]
     objeto.save()
     codigo_encuesta = json["id_formulario"]
