@@ -131,7 +131,7 @@
     "model": "basedatos.catalogo",
     "pk": 17,
     "fields": {
-      "cat_descripcion": "AFROECUATORIANA",
+      "cat_descripcion": "AFROECUATORIANO",
       "cat_padre": 3
     }
   },

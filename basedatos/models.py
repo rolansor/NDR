@@ -104,10 +104,11 @@ class Informacion(models.Model):
     inf_nombres = models.CharField(max_length=150)
     inf_apellidos = models.CharField(max_length=150)
     inf_sexo = models.ForeignKey(Catalogo, related_name="encuestado_sexo", limit_choices_to={'cat_padre': 1})
-    inf_fecha_nac = models.DateTimeField()
+    inf_fecha_nac = models.DateField()
     inf_telefono = models.CharField(max_length=20)
     inf_est_civil = models.ForeignKey(Catalogo, related_name="encuestado_estcivil", limit_choices_to={'cat_padre': 4})
     inf_etnia = models.ForeignKey(Catalogo, related_name="encuestado_etnia", limit_choices_to={'cat_padre': 4})
+
     inf_canton = models.ForeignKey(Localidad, related_name="encuestado_canton")
     inf_provincia = models.ForeignKey(Localidad, related_name="encuestado_provincia")
     inf_vivienda = models.ForeignKey(Catalogo, related_name="encuestado_vivienda", limit_choices_to={'cat_padre': 4})
@@ -115,12 +116,14 @@ class Informacion(models.Model):
     inf_personas = models.PositiveSmallIntegerField()
     inf_agua = models.ForeignKey(Catalogo, related_name="encuestado_agua", limit_choices_to={'cat_padre': 4})
     inf_cloacas = models.BooleanField()
+
     inf_cbzfam = models.BooleanField()
     inf_ingresos = models.BooleanField()
     inf_llegafin = models.BooleanField()
     inf_ocupacion = models.ForeignKey(Catalogo, related_name="encuestado_ocupacion", limit_choices_to={'cat_padre': 4})
     inf_trabajo = models.CharField(max_length=150)
     inf_estudios = models.ForeignKey(Catalogo, related_name="encuestado_estudios", limit_choices_to={'cat_padre': 4})
+
     inf_seguro = models.BooleanField()
     inf_det_seguro = models.CharField(max_length=150)
     inf_chequeos = models.BooleanField()
@@ -133,6 +136,7 @@ class Informacion(models.Model):
     inf_det_renal = models.CharField(max_length=150)
     inf_otra_enf = models.BooleanField()
     inf_det_enf = models.CharField(max_length=150)
+
     inf_insulina = models.BooleanField()
     inf_hipoglucemias = models.BooleanField()
     inf_det_hipogluce = models.CharField(max_length=150)
@@ -149,6 +153,7 @@ class Informacion(models.Model):
     inf_med_1 = models.BooleanField()
     inf_med_2 = models.BooleanField()
     inf_med_3 = models.BooleanField()
+
     inf_glucosa = models.BooleanField()
     inf_dia_familia = models.BooleanField()
     inf_dia_parientes = models.BooleanField()
@@ -157,6 +162,7 @@ class Informacion(models.Model):
     inf_pre_familia = models.BooleanField()
     inf_renal_familia = models.BooleanField()
     inf_det_renal_fam = models.CharField(max_length=150)
+
     inf_tabaco = models.BooleanField()
     inf_det_tabaco = models.PositiveSmallIntegerField()
     inf_alcohol = models.BooleanField()
