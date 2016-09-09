@@ -28,7 +28,7 @@ class Preparacion(models.Model):
     prep_ayunas = models.BooleanField(default=False)
     prep_lugar = models.CharField(max_length=150)
     prep_fecha = models.DateField()
-    prep_foto_cons = models.ImageField(upload_to='preparacion/consentimientos', null=True, blank=True)
+    prep_foto_cons = models.ImageField(upload_to='/static/consentimientos', null=True, blank=True)
     #Campos de auditoria:
     prep_nombre_resp = models.CharField(max_length=150)
     prep_cedula_resp = models.CharField(max_length=10)

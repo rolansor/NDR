@@ -57,9 +57,9 @@ def save_file(file):
 def clasificarjson(filename):
     a,b = filename.split("_")
     if a == 'prep':
-        return '%s/preparacion/encuestas/' % MEDIA_ROOT
+        return '%s/preparacion/' % MEDIA_ROOT
     if a == 'cons':
-        return '%s/preparacion/consentimientos/' % MEDIA_ROOT
+        return '%s/static/consentimientos/' % MEDIA_ROOT
     elif a == 'info':
         return '%s/informacion_general/' % MEDIA_ROOT
     elif a == 'medi':

@@ -18,8 +18,10 @@ from django.conf.urls import url
 from django.conf.urls import url, include
 from usuarios import urls as usuarios_urls
 from basedatos import urls as basedatos_urls
+from reportes import urls as reportes_urls
 
 urlpatterns = [
     url(r'^', include(usuarios_urls)),
     url(r'^', include(basedatos_urls)),
+    url(r'^', include(reportes_urls)),
 ]

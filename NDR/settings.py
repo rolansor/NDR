@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'basedatos',
+    'reportes',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -126,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
 LOGIN_URL = '/ingreso'
 
