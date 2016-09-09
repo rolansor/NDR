@@ -1,0 +1,97 @@
+{
+  "id_formulario": "YA12345",
+  "tipo_formulario": "Informacion_General",
+  "uuid_creado": "352910072902681",
+  "hora_creacion": "Friday, August 26 2016, 12:34 PM",
+  "informacion_general": [
+    {
+      "sexo": "1",
+      "etnia": "Mestiza",
+      "nombres": "LORENA",
+      "estado_civil": "Soltero",
+      "apellidos": "CARLO",
+      "telefono": "0912345678",
+      "fecha_nac": "31-03-1989"
+    }
+  ],
+  "vivienda": [
+    {
+      "cloacas": "0",
+      "agua": "Cisterna",
+      "vivienda": "Ciudad",
+      "canton": "Guayaquil",
+      "personas": "5",
+      "direccion": "GHGHG",
+      "provincia": "Guayas"
+    }
+  ],
+  "economia_familiar": [
+    {
+      "trabajo": "PROFESOR",
+      "llegafin": "1",
+      "ingresos": "1",
+      "ocupacion": "Empleado",
+      "cbzfam": "0",
+      "estudios": "Terciarios Completos"
+    }
+  ],
+  "salud": [
+    {
+      "enfermedad": "1",
+      "det_tmp_diabetes": "",
+      "det_enfermedad": "GRIPE",
+      "det_renal": "",
+      "renal": "0",
+      "chequeos": "1",
+      "det_vec_chequeo": "1",
+      "presion": "0",
+      "diabetes": "0",
+      "det_mes_chequeo": "12",
+      "seguro": "1",
+      "det_seguro": "SALUD"
+    }
+  ],
+  "medicamentos": [
+    {
+      "razon_4": "0",
+      "det_medicina_presion": "",
+      "med_3": "1",
+      "med_1": "0",
+      "det_medicinas_otros": "",
+      "razon_1": "0",
+      "med_2": "1",
+      "analgesicos": "0",
+      "hipoglucemias": "0",
+      "det_hipoglucemias": "",
+      "razon_3": "0",
+      "razon_2": "0",
+      "det_analgesicos": "",
+      "medicina_presion": "0",
+      "insulina": "0",
+      "medicinas_otros": "0"
+    }
+  ],
+  "antecedentes": [
+    {
+      "det_ant_enf_renal": "",
+      "ant_embarazo": "0",
+      "ant_renal": "0",
+      "ant_familia": "0",
+      "ant_glucosa": "0",
+      "ant_pso_hijos": "0",
+      "ant_parientes": "0",
+      "ant_presion": "1"
+    }
+  ],
+  "habitos": [
+    {
+      "otros": "0",
+      "tabaco": "0",
+      "det_frc_alcohol": "1",
+      "alcohol": "0",
+      "det_frc_tabaco": "",
+      "ejercicios": "Hago ejercicios todos los dias",
+      "det_frc_otros": ""
+    }
+  ]
+}

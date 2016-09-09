@@ -33,18 +33,3 @@ def ingreso(request):
         else:
             context['mensajeLogin'] = 'Su nombre o usuario son incorrectos.'
             return render(request, 'ingreso.html', context)
-
-
-def reportes_geograficos(request):
-    context = {}
-    return render(request, 'reportes_geograficos.html', context)
-
-def reportes_graficos(request):
-    context = {}
-    return render(request, 'reportes_graficos.html', context)
-
-def reportes_fisicos(request):
-    context = {}
-    encuestas = Encuesta.objects.all()
-    context['encuestas'] = encuestas
-    return render(request, 'reportes_fisicos.html', context)

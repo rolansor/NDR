@@ -1,0 +1,99 @@
+{
+  "id_formulario": "AA91921",
+  "tipo_formulario": "Informacion_General",
+  "uuid_creado": "352910072902681",
+  "nombres_encuestador": "",
+  "cedula_encuestador": "",
+  "hora_creacion": "Wednesday, September 7 2016, 4:49 AM",
+  "informacion_general": [
+    {
+      "sexo": "0",
+      "etnia": "Mestiza",
+      "nombres": "ROLANDO",
+      "estado_civil": "Unión Libre",
+      "apellidos": "SORNOZA",
+      "telefono": "568391",
+      "fecha_nac": "01-02-1900"
+    }
+  ],
+  "vivienda": [
+    {
+      "cloacas": "0",
+      "agua": "Cisterna",
+      "vivienda": "Campo",
+      "canton": "General Antonio Elizalde",
+      "personas": "65",
+      "direccion": "FJFKRKR",
+      "provincia": "Guayas"
+    }
+  ],
+  "economia_familiar": [
+    {
+      "trabajo": "NO TRABAJA",
+      "llegafin": "0",
+      "ingresos": "0",
+      "ocupacion": "No Trabaja",
+      "cbzfam": "0",
+      "estudios": "Universitarios Completos"
+    }
+  ],
+  "salud": [
+    {
+      "enfermedad": "0",
+      "det_tmp_diabetes": "",
+      "det_enfermedad": "",
+      "det_renal": "",
+      "renal": "0",
+      "chequeos": "0",
+      "det_vec_chequeo": "",
+      "presion": "0",
+      "diabetes": "0",
+      "det_mes_chequeo": "",
+      "seguro": "0",
+      "det_seguro": ""
+    }
+  ],
+  "medicamentos": [
+    {
+      "razon_4": "0",
+      "det_medicina_presion": "",
+      "med_3": "0",
+      "med_1": "0",
+      "det_medicinas_otros": "",
+      "razon_1": "0",
+      "med_2": "0",
+      "analgesicos": "0",
+      "hipoglucemias": "0",
+      "det_hipoglucemias": "",
+      "razon_3": "0",
+      "razon_2": "0",
+      "det_analgesicos": "",
+      "medicina_presion": "0",
+      "insulina": "0",
+      "medicinas_otros": "0"
+    }
+  ],
+  "antecedentes": [
+    {
+      "det_ant_enf_renal": "",
+      "ant_embarazo": "0",
+      "ant_renal": "0",
+      "ant_familia": "0",
+      "ant_glucosa": "0",
+      "ant_pso_hijos": "0",
+      "ant_parientes": "0",
+      "ant_presion": "0"
+    }
+  ],
+  "habitos": [
+    {
+      "otros": "0",
+      "tabaco": "0",
+      "det_frc_alcohol": "",
+      "alcohol": "0",
+      "det_frc_tabaco": "",
+      "ejercicios": "Solo hago ejercicios en el tiempo libre",
+      "det_frc_otros": ""
+    }
+  ]
+}
