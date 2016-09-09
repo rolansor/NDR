@@ -28,43 +28,42 @@ Inicio / Reportes / Geograficos
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label class="font-noraml">Provincias</label>
-                            <div class="input-group">
-                                <select data-placeholder="Selecciona una Provincia..." class="chosen-select"
-                                        style="width:350px;" tabindex="2">
-                                    <option value="">Seleciona una Provincia</option>
-                                    <option value="1">Guayaquil</option>
-                                    <option value="2">Esmeraldas</option>
-                                    <option value="3">El Oro</option>
-                                    <option value="4">Manabi</option>
-                                    <option value="5">Santa Elena</option>
-                                    <option value="6">Los Rios</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="font-noraml">Enfermedades</label>
-                            <div class="input-group">
-                                <select data-placeholder="Selecciona una Enfermedad..." class="chosen-select"
-                                        style="width:350px;" tabindex="2">
-                                    <option value="">Seleciona una Enfermedad</option>
-                                    <option value="1">Diabetes</option>
-                                    <option value="2">Sobrepeso</option>
-                                    <option value="3">Hipertension</option>
-                                    <option value="4">Nefropatia Diabetica</option>
+                            <div class="col-sm-12">
+                                <select class="form-control m-b" name="account">
+                                    {% for item in provincias %}
+                                    <option>{{item.loc_descripcion}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="font-noraml">Sexo</label>
-                            <div class="input-group">
-                                <select data-placeholder="Selecciona un Sexo..." class="chosen-select"
-                                        style="width:350px;" tabindex="2">
-                                    <option value="">Seleciona una Sexo</option>
-                                    <option value="1">Masculino</option>
-                                    <option value="2">Femenino</option>
+                            <div class="col-sm-12">
+                                <select class="form-control m-b" name="account">
+                                    {% for item in sexo %}
+                                    <option>{{item.cat_descripcion}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group col-md-4">
+                            <label class="font-noraml">Criterio</label>
+                            <div class="col-sm-12">
+                                <select class="form-control m-b" name="account">
+                                    {% for item in indicadores %}
+                                    <option>{{item.cat_descripcion}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-w-m btn-primary center-block">Generar</button>
+                        </div>
+                        <div class="col-md-4"></div>
+
                     </div>
                 </div>
             </div>

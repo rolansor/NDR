@@ -5,6 +5,12 @@ from basedatos.models import *
 
 def reportes_geograficos(request):
     context = {}
+    provincias = Localidad.objects.filter(loc_padre__isnull=True)
+    context['provincias'] = provincias
+    sexo = Catalogo.objects.filter(cat_padre=1)
+    context['sexo'] = sexo
+    indicadores = Catalogo.objects.filter(cat_padre__isnull=False).exclude(cat_padre = 1)
+    context['indicadores'] = indicadores
     return render(request, 'reportes_geograficos.html', context)
 
 def reportes_graficos(request):
@@ -46,3 +52,4 @@ def reportes_personalizado(request):
     encuestas = ""
     context['encuestas'] = encuestas
     return render(request, 'reportes_personalizado.html', context)
+

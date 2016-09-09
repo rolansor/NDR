@@ -5,6 +5,8 @@ from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
+
+from NDR.settings import STATICFILES_DIRS
 from models import *
 
 @csrf_exempt
@@ -18,6 +20,7 @@ def recibirjson(request):
         guardada = save_file(archivo)
 
         if(str(archivo._get_name()).endswith('.jpg')):
+            save_file(archivo)
             return HttpResponse(status=200)
 
         else:
@@ -54,12 +57,13 @@ def save_file(file):
         return False
     return True
 
+
 def clasificarjson(filename):
     a,b = filename.split("_")
     if a == 'prep':
         return '%s/preparacion/' % MEDIA_ROOT
     if a == 'cons':
-        return '%s/static/consentimientos/' % MEDIA_ROOT
+        return '%s/consentimientos/' % STATICFILES_DIRS
     elif a == 'info':
         return '%s/informacion_general/' % MEDIA_ROOT
     elif a == 'medi':
@@ -112,7 +116,7 @@ def guardarpreparacion(json):
     objeto.prep_ayunas = stringtobool(json["preparacion"][0]["ayunas"])
     objeto.prep_lugar = json["preparacion"][0]["lugar_encuesta"]
     objeto.prep_fecha = datetime.strptime(json["preparacion"][0]["fecha_encuesta"], "%A, %B %d %Y, %I:%M %p")
-    objeto.prep_foto_cons = '%s/preparacion/consentimientos/no_image.png' % MEDIA_ROOT
+    objeto.prep_foto_cons = '/static/consentimientos/' + json["id_formulario"] + '.jpg'
     objeto.prep_nombre_resp = json["nombres_encuestador"]
     objeto.prep_cedula_resp = json["cedula_encuestador"]
     objeto.prep_uuid_creado = json["uuid_creado"]

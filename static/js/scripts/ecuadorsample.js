@@ -244,8 +244,8 @@ AmCharts.ready(function() {
     map = new AmCharts.AmMap();
     map.projection = "mercator";
 
-    map.addTitle("Population of the World in 2011", 14);
-    map.addTitle("source: Gapminder", 11);
+    map.addTitle("Datos del Estudio Costa Ecuatoriana", 14);
+    map.addTitle("Hombres con Diabetes", 11);
     map.areasSettings = {
         unlistedAreasColor: "#FFFFFF",
         unlistedAreasAlpha: 0.1
