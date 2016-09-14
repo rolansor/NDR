@@ -41,54 +41,54 @@ Inicio / Reportes / Documentos
                             {% for item in encuestas %}
                                 <tr class="odd" role="row">
                                     <td >{{item.enc_codigo}}</td>
-                                    <td class="center">{{item.fk_preparacion.prep_nombres}}</td>
-                                    <td class="center">{{item.fk_preparacion.prep_ayunas|yesno:"SI,NO,NO DECLARO"}}</td>
-                                    <td class="center">{{item.fk_preparacion.prep_lugar}}</td>
-                                    <td class="center">{{item.fk_preparacion.prep_fecha|date:"SHORT_DATE_FORMAT"}}</td>
-                                    <td class="center"><a data-toggle="modal" href="#" data-target="#modalFoto"><i class="fa fa-file-image-o"></i></a></td>
-                                    <td class="center"><a data-toggle="modal" href="#" data-target="#modalResponsable"><i class="fa fa-user"></i></a></td>
+                                    <td>{{item.fk_preparacion.prep_nombres}}</td>
+                                    <td>{{item.fk_preparacion.prep_ayunas|yesno:"SI,NO,NO DECLARO"}}</td>
+                                    <td>{{item.fk_preparacion.prep_lugar}}</td>
+                                    <td>{{item.fk_preparacion.prep_fecha|date:"SHORT_DATE_FORMAT"}}</td>
+                                    <td><a id="{{item.enc_codigo}}" data-toggle="modal" href="#" data-target="#modalFoto" class="foto"><i class="fa fa-file-image-o"></i></a></td>
+                                    <td><a data-toggle="modal" href="#" data-target="#modalResponsable"><i class="fa fa-user"></i></a></td>
                                 </tr>
-                                <div class="modal inmodal" id="modalFoto" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content animated bounceInRight">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Consentimiento Informado</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="{{item.fk_preparacion.prep_foto_cons}}"  style=" width:100%;height: auto;">
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="modal inmodal" id="modalResponsable" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content animated bounceInRight">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                <i class="fa fa-user modal-icon"></i>
-                                                <h4 class="modal-title">Responsable Encuesta</h4>
-                                            </div>
-                                        <div class="modal-body">
-                                            <div class="contact-box center-version">
-                                                <a href="#">
-                                                    <h3 class="m-b-xs"><strong>{{item.fk_preparacion.prep_nombre_resp}}</strong></h3>
-                                                    <h3 class="m-b-xs">{{item.fk_preparacion.prep_cedula_resp}}</h3>
-                                                    <div class="m-b-xs">{{item.fk_preparacion.prep_uuid_creado}}</div>
-                                                </a>
-                                            </div>
+                                <div class="modal-dialog">
+                                <div class="modal-content animated bounceInRight">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <i class="fa fa-user modal-icon"></i>
+                                            <h4 class="modal-title">Responsable Encuesta</h4>
                                         </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                            </div>
+                                    <div class="modal-body">
+                                        <div class="contact-box center-version">
+                                            <a href="#">
+                                                <h3 class="m-b-xs"><strong>{{item.fk_preparacion.prep_nombre_resp}}</strong></h3>
+                                                <h3 class="m-b-xs">{{item.fk_preparacion.prep_cedula_resp}}</h3>
+                                                <div class="m-b-xs">{{item.fk_preparacion.prep_uuid_creado}}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             {% endfor %}
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="modal inmodal" id="modalFoto" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content animated bounceInRight">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Consentimiento Informado</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img id="imagen_cons" src="/static/consentimientos/no_image.png"  style=" width:100%;height: auto;">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,6 +149,22 @@ Inicio / Reportes / Documentos
 
 
 
+</script>
+
+<script type="text/javascript">
+var myImg = $('#imagen_cons')
+    jQuery(function($){
+         $('a.foto').click(function(ev){
+             ev.preventDefault();
+             var uid = $(this).attr('id');
+             myImg.attr('src', '/static/consentimientos/'+ 'cons_' + uid +'.jpg');
+         });
+         $('a.responsable').click(function(ev){
+             ev.preventDefault();
+             var uid = $(this).attr('id');
+             myImg.attr('src', '/static/consentimientos/'+ 'cons_' + uid +'.jpg');
+         });
+    });
 </script>
 
 {% endblock %}

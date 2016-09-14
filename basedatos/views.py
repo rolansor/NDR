@@ -5,6 +5,7 @@ from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
+import os.path
 
 from NDR.settings import STATICFILES_DIRS
 from models import *
@@ -19,44 +20,47 @@ def recibirjson(request):
         ##Guardamos el archivo en el servidor
         guardada = save_file(archivo)
 
-        if(str(archivo._get_name()).endswith('.jpg')):
-            save_file(archivo)
-            return HttpResponse(status=200)
+        if guardada == -1:
+            #Ya existe el archivo httpcode = 201
+            return HttpResponse(status=201)
 
-        else:
-            ##Transformamos el archivo en json
-            json_encuesta = leer_json(archivo)
+        elif guardada == 1:
+            #Si es una imagen, solo necesitamos subirla.
+            if(str(archivo._get_name()).endswith('.jpg')):
+                return HttpResponse(status=200)
 
-            ##Guardamos en la base el json
-            sincronizada = guardar_encuesta(json_encuesta)
-
-            ##Si ha sido guardada y sincronizada
-            if guardada and sincronizada:
-                return HttpResponse(status=200)
-            elif guardada and not sincronizada:
-                return HttpResponse(status=200)
-            elif guardada and not sincronizada:
-                return HttpResponse(status=200)
             else:
-                return HttpResponse(status=200)
+                ##Transformamos el archivo en json
+                json_encuesta = leer_json(archivo)
+
+                ##Guardamos en la base el json
+                sincronizada = guardar_encuesta(json_encuesta)
+
+                ##Si ha sido guardada y sincronizada
+                if sincronizada:
+                    return HttpResponse(status=500)
+                else:
+                    return HttpResponse(status=500)
+        else:
+            return HttpResponse(status=500)
 
     else:
-        #temp = leer_json("infog_AB12345.json","/media/informacion_general/")
-        #clasificarjson("infog_AB12345.json")
-        return render(request, '/recibirjson', context)
+        return HttpResponse(status=200)
 
 def save_file(file):
     filename = file._get_name()
     ruta = clasificarjson(str(filename))
-    try:
-        fd = open('%s%s' % (ruta, str(filename)), 'wb')
-        for chunk in file.chunks():
-            fd.write(chunk)
-        fd.close()
-    except IOError:
-        return False
-    return True
-
+    if os.path.isfile(ruta + filename ):
+        return -1
+    else:
+        try:
+            fd = open('%s%s' % (ruta, str(filename)), 'wb')
+            for chunk in file.chunks():
+                fd.write(chunk)
+            fd.close()
+            return 1
+        except IOError:
+            return 0
 
 def clasificarjson(filename):
     a,b = filename.split("_")
@@ -83,55 +87,70 @@ def leer_json(file):
         json_string = f.read()
         f.close()
         data_json = json.loads(json_string)
+        return data_json
     except IOError:
         return ""
-    return data_json
+
 
 def guardar_encuesta(json):
     tipo_formulario = json["tipo_formulario"]
 
     if tipo_formulario == "Preparacion":
-        guardarpreparacion(json)
-
+        try:
+            guardarpreparacion(json)
+            return True
+        except:
+            return False
     elif tipo_formulario == "Informacion_General":
-        guardarinformacion(json)
-        i = 0
-
+        try:
+            guardarinformacion(json)
+            return True
+        except:
+            return False
     elif tipo_formulario == "Medidas":
-        guardarmedidas(json)
-
+        try:
+            guardarmedidas(json)
+            return True
+        except:
+            return False
     elif tipo_formulario == "Presion":
-        guardarpresion(json)
-
+        try:
+            guardarpresion(json)
+            return True
+        except:
+            return False
     elif tipo_formulario == "Laboratorio":
-        guardarlaboratorio(json)
-
-    return True
+        try:
+            guardarlaboratorio(json)
+            return True
+        except:
+            return False
 
 
 def guardarpreparacion(json):
+    codigo_encuesta = json["id_formulario"]
     objeto = Preparacion()
     objeto.prep_fecha_creacion = datetime.strptime(json["hora_creacion"], "%A, %B %d %Y, %I:%M %p")
     objeto.prep_nombres = json["preparacion"][0]["nombres"]
     objeto.prep_ayunas = stringtobool(json["preparacion"][0]["ayunas"])
     objeto.prep_lugar = json["preparacion"][0]["lugar_encuesta"]
     objeto.prep_fecha = datetime.strptime(json["preparacion"][0]["fecha_encuesta"], "%A, %B %d %Y, %I:%M %p")
-    objeto.prep_foto_cons = '/static/consentimientos/' + json["id_formulario"] + '.jpg'
+    objeto.prep_foto_cons = '/static/consentimientos/' + 'cons_' + json["id_formulario"] + '.jpg'
     objeto.prep_nombre_resp = json["nombres_encuestador"]
     objeto.prep_cedula_resp = json["cedula_encuestador"]
     objeto.prep_uuid_creado = json["uuid_creado"]
-    objeto.save()
-    codigo_encuesta = json["id_formulario"]
+
     try:
         encuesta = Encuesta.objects.get(enc_codigo=codigo_encuesta)
+        if encuesta.fk_preparacion is None:
+            objeto.save()
+            encuesta.enc_fecha_mod = datetime.now()
+            encuesta.fk_preparacion = objeto
+            encuesta.save()
+        else:
+            print "Ya existe la encuesta"
     except:
-        encuesta = None
-
-    if encuesta is not None:
-        encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_preparacion = objeto
-        encuesta.save()
-    if encuesta is None:
+        objeto.save()
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
@@ -500,19 +519,20 @@ def guardarinformacion(json):
     #Ejercicios
     ejercicios = json["habitos"][0]["ejercicios"].upper().strip()
     objeto.inf_ejercicios = Catalogo.objects.get(cat_descripcion=ejercicios)
-    objeto.save()
 
     codigo_encuesta = json["id_formulario"]
+
     try:
         encuesta = Encuesta.objects.get(enc_codigo=codigo_encuesta)
+        if encuesta.fk_informacion is None:
+            objeto.save()
+            encuesta.enc_fecha_mod = datetime.now()
+            encuesta.fk_informacion = objeto
+            encuesta.save()
+        else:
+            print "Ya existe la encuesta"
     except:
-        encuesta = None
-
-    if encuesta is not None:
-        encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_informacion = objeto
-        encuesta.save()
-    if encuesta is None:
+        objeto.save()
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
@@ -542,19 +562,19 @@ def guardarmedidas(json):
     objeto.med_nombre_resp = json["nombres_encuestador"]
     objeto.med_cedula_resp = json["cedula_encuestador"]
     objeto.med_uuid_creado = json["uuid_creado"]
-    objeto.save()
     codigo_encuesta = json["id_formulario"]
+
     try:
         encuesta = Encuesta.objects.get(enc_codigo=codigo_encuesta)
+        if encuesta.fk_medidas is None:
+            objeto.save()
+            encuesta.enc_fecha_mod = datetime.now()
+            encuesta.fk_medidas = objeto
+            encuesta.save()
+        else:
+            print "Ya existe la encuesta"
     except:
-        encuesta = None
-
-    if encuesta is not None:
-        encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_medidas = objeto
-        encuesta.save()
-
-    if encuesta is None:
+        objeto.save()
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
@@ -590,18 +610,18 @@ def guardarpresion(json):
     objeto.pres_nombre_resp = json["nombres_encuestador"]
     objeto.pres_cedula_resp = json["cedula_encuestador"]
     objeto.pres_uuid_creado = json["uuid_creado"]
-    objeto.save()
     codigo_encuesta = json["id_formulario"]
     try:
         encuesta = Encuesta.objects.get(enc_codigo=codigo_encuesta)
+        if encuesta.fk_presion is None:
+            objeto.save()
+            encuesta.enc_fecha_mod = datetime.now()
+            encuesta.fk_presion = objeto
+            encuesta.save()
+        else:
+            print "Ya existe la encuesta"
     except:
-        encuesta = None
-
-    if encuesta is not None:
-        encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_presion = objeto
-        encuesta.save()
-    if encuesta is None:
+        objeto.save()
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
@@ -629,18 +649,18 @@ def guardarlaboratorio(json):
     objeto.lab_nombre_resp = json["nombres_encuestador"]
     objeto.lab_cedula_resp = json["cedula_encuestador"]
     objeto.lab_uuid_creado = json["uuid_creado"]
-    objeto.save()
     codigo_encuesta = json["id_formulario"]
     try:
         encuesta = Encuesta.objects.get(enc_codigo=codigo_encuesta)
+        if encuesta.fk_laboratorio is None:
+            objeto.save()
+            encuesta.enc_fecha_mod = datetime.now()
+            encuesta.fk_laboratorio = objeto
+            encuesta.save()
+        else:
+            print "Ya existe la encuesta"
     except:
-        encuesta = None
-
-    if encuesta is not None:
-        encuesta.enc_fecha_mod = datetime.now()
-        encuesta.fk_laboratorio = objeto
-        encuesta.save()
-    if encuesta is None:
+        objeto.save()
         encuesta = Encuesta()
         encuesta.enc_codigo = codigo_encuesta
         encuesta.enc_fecha_mod = datetime.now()
