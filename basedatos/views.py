@@ -38,7 +38,7 @@ def recibirjson(request):
 
                 ##Si ha sido guardada y sincronizada
                 if sincronizada:
-                    return HttpResponse(status=500)
+                    return HttpResponse(status=200)
                 else:
                     return HttpResponse(status=500)
         else:

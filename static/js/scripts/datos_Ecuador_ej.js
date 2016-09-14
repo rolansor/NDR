@@ -1,4 +1,3 @@
-
 AmCharts.makeChart("mapdiv",{
     "type": "map",
     "addClassNames": true,

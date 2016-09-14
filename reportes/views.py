@@ -1,20 +1,46 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from basedatos.models import *
 
-
+@csrf_exempt
 def reportes_geograficos(request):
     context = {}
-    provincias = Localidad.objects.filter(loc_padre__isnull=True)
-    context['provincias'] = provincias
-    sexo = Catalogo.objects.filter(cat_padre=1)
-    context['sexo'] = sexo
-    indicadores = Catalogo.objects.filter(cat_padre__isnull=False).exclude(cat_padre = 1)
-    context['indicadores'] = indicadores
-    return render(request, 'reportes_geograficos.html', context)
+    if request.method == "POST":
+        provincia = request.POST['provincia']
+        sexo = request.POST['sexo']
+        criterio = request.POST['criterio']
+
+        provincias = []
+
+        if provincia == '0':
+            for x in range(0,6):
+                mujeres_diab = Informacion.objects.filter(inf_sexo=9, inf_provincia=x, inf_diabetes=1).count()
+                provincias.append(mujeres_diab)
+            response={'busqueda': 'Mujeres con Diabetes',
+                                            'ESM': provincias[0],'MAN': provincias[1],
+                                            'GUA': provincias[2],'RIO': provincias[3],
+                                            'ORO': provincias[4], 'SLN': provincias[5]}
+            return HttpResponse(json.dumps(response), content_type='application/json')
+        else:
+            return render(request, 'reportes_geograficos.html', context)
+
+
+    if request.method == "GET":
+        provincias = Localidad.objects.filter(loc_padre__isnull=True)
+        context['provincias'] = provincias
+        sexo = Catalogo.objects.filter(cat_padre=1)
+        context['sexo'] = sexo
+        indicadores = Catalogo.objects.filter(cat_padre__isnull=False).exclude(cat_padre = 1)
+        context['indicadores'] = indicadores
+        return render(request, 'reportes_geograficos.html', context)
 
 def reportes_graficos(request):
     context = {}
+
     return render(request, 'reportes_graficos.html', context)
 
 def reportes_preparacion(request):

@@ -29,9 +29,10 @@ Inicio / Reportes / Geograficos
                         <div class="form-group col-md-4">
                             <label class="font-noraml">Provincias</label>
                             <div class="col-sm-12">
-                                <select class="form-control m-b" name="account">
+                                <select id="provincia" class="form-control m-b" name="account">
+                                    <option value="0" >TODAS</option>
                                     {% for item in provincias %}
-                                    <option>{{item.loc_descripcion}}</option>
+                                    <option value="{{item.id_localidad}}">{{item.loc_descripcion}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -39,9 +40,10 @@ Inicio / Reportes / Geograficos
                         <div class="form-group col-md-4">
                             <label class="font-noraml">Sexo</label>
                             <div class="col-sm-12">
-                                <select class="form-control m-b" name="account">
+                                <select id="sexo" class="form-control m-b" name="account">
+                                    <option value="0">AMBOS</option>
                                     {% for item in sexo %}
-                                    <option>{{item.cat_descripcion}}</option>
+                                    <option value="{{item.id_catalogo}}">{{item.cat_descripcion}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -49,10 +51,16 @@ Inicio / Reportes / Geograficos
                         <div class="form-group col-md-4">
                             <label class="font-noraml">Criterio</label>
                             <div class="col-sm-12">
-                                <select class="form-control m-b" name="account">
-                                    {% for item in indicadores %}
+                                <select id="criterio" class="form-control m-b" name="account">
+                                    <option value="0">Diabetes</option>
+                                    <option value="1">Toma Insulina</option>
+                                    <option value="2">Diabetes</option>
+                                    <option value="3">Toma Insulina</option>
+                                    <option value="4">Diabetes</option>
+                                    <option value="5">Toma Insulina</option>
+                                    <!--{% for item in indicadores %}
                                     <option>{{item.cat_descripcion}}</option>
-                                    {% endfor %}
+                                    {% endfor %}-->
                                 </select>
                             </div>
                         </div>
@@ -60,7 +68,7 @@ Inicio / Reportes / Geograficos
                     <div class="row">
                          <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-w-m btn-primary center-block">Generar</button>
+                            <button type="button" id="generar" class="btn btn-w-m btn-primary center-block">Generar</button>
                         </div>
                         <div class="col-md-4"></div>
 
@@ -89,6 +97,7 @@ Inicio / Reportes / Geograficos
 <script src="/static/js/plugins/ammap/maps/js/ecuadorLow.js" type="text/javascript"></script>
 <script src="/static/js/plugins/chosen/chosen.jquery.js"></script>
 <script src="/static/js/scripts/ecuadorsample.js"></script>
+<script src="/static/js/plugins/ammap/themes/dark.js" type="text/javascript"></script>
 
 
 {% endblock %}
