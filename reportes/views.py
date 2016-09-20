@@ -40,8 +40,49 @@ def reportes_geograficos(request):
 
 def reportes_graficos(request):
     context = {}
+    if request.method == "GET":
 
-    return render(request, 'reportes_graficos.html', context)
+        h_diab = Informacion.objects.filter(inf_sexo=9, inf_diabetes=1).count()
+        m_diab = Informacion.objects.filter(inf_sexo=10, inf_diabetes=1).count()
+        hombres = Informacion.objects.filter(inf_sexo=10).count()
+        mujeres = Informacion.objects.filter(inf_sexo=10).count()
+        diaxlocE = Informacion.objects.filter(inf_diabetes=1, inf_provincia=1).count()
+        diaxlocM = Informacion.objects.filter(inf_diabetes=1, inf_provincia=2).count()
+        diaxlocG = Informacion.objects.filter(inf_diabetes=1, inf_provincia=3).count()
+        diaxlocO = Informacion.objects.filter(inf_diabetes=1, inf_provincia=5).count()
+        diaxlocR = Informacion.objects.filter(inf_diabetes=1, inf_provincia=4).count()
+        diaxlocS = Informacion.objects.filter(inf_diabetes=1, inf_provincia=6).count()
+
+        insulinaE = Informacion.objects.filter(inf_insulina=1, inf_provincia=1).count()
+        insulinaM = Informacion.objects.filter(inf_insulina=1, inf_provincia=2).count()
+        insulinaG = Informacion.objects.filter(inf_insulina=1, inf_provincia=3).count()
+        insulinaO = Informacion.objects.filter(inf_insulina=1, inf_provincia=5).count()
+        insulinaR = Informacion.objects.filter(inf_insulina=1, inf_provincia=4).count()
+        insulinaS = Informacion.objects.filter(inf_insulina=1, inf_provincia=6).count()
+
+
+        context['h_diab'] = h_diab
+        context['m_diab'] = m_diab
+        context['hombres'] = hombres
+        context['mujeres'] = mujeres
+        context['diaxlocE'] = diaxlocE
+        context['diaxlocM'] = diaxlocM
+        context['diaxlocG'] = diaxlocG
+        context['diaxlocO'] = diaxlocO
+        context['diaxlocR'] = diaxlocR
+        context['diaxlocS'] = diaxlocS
+        context['insulinaE'] = insulinaE
+        context['insulinaM'] = insulinaM
+        context['insulinaG'] = insulinaG
+        context['insulinaO'] = insulinaO
+        context['insulinaR'] = insulinaR
+        context['insulinaS'] = insulinaS
+
+
+        return render(request, 'reportes_graficos.html', context)
+
+    if request.method == "GET":
+        return render(request, 'reportes_graficos.html', context)
 
 def reportes_preparacion(request):
     context = {}

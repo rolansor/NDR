@@ -152,14 +152,10 @@ Inicio / Reportes / Documentos
 </script>
 
 <script type="text/javascript">
-var myImg = $('#imagen_cons')
+
     jQuery(function($){
          $('a.foto').click(function(ev){
-             ev.preventDefault();
-             var uid = $(this).attr('id');
-             myImg.attr('src', '/static/consentimientos/'+ 'cons_' + uid +'.jpg');
-         });
-         $('a.responsable').click(function(ev){
+             var myImg = $('#imagen_cons')
              ev.preventDefault();
              var uid = $(this).attr('id');
              myImg.attr('src', '/static/consentimientos/'+ 'cons_' + uid +'.jpg');

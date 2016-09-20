@@ -15,13 +15,12 @@ Inicio / Reportes / Graficos
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Diabetes vs Hipertension
-                        <small>Guayas</small>
+                    <h5>Casos de Diabetes Registrados
                     </h5>
                 </div>
                 <div class="ibox-content">
                     <div>
-                        <canvas id="lineChart" height="140"></canvas>
+                        <canvas id="hvsmdiabetes" height="140"></canvas>
                     </div>
                 </div>
             </div>
@@ -29,11 +28,11 @@ Inicio / Reportes / Graficos
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Casos Positivos Diabetes/Nefropatia</h5>
+                    <h5>Diabetes por Provincia</h5>
                 </div>
                 <div class="ibox-content">
                     <div>
-                        <canvas id="barChart" height="140"></canvas>
+                        <canvas id="diaxLocalidad" height="140"></canvas>
                     </div>
                 </div>
             </div>
@@ -43,12 +42,12 @@ Inicio / Reportes / Graficos
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Rango Edad Pacientes</h5>
+                    <h5>Hombres vs Mujeres</h5>
 
                 </div>
                 <div class="ibox-content">
                     <div class="text-center">
-                        <canvas id="polarChart" height="140"></canvas>
+                        <canvas id="hvsm" height="140"></canvas>
                     </div>
                 </div>
             </div>
@@ -56,31 +55,33 @@ Inicio / Reportes / Graficos
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Hombres vs Mujeres </h5>
+                    <h5>Toman Insulina</h5>
 
                 </div>
                 <div class="ibox-content">
                     <div>
-                        <canvas id="doughnutChart" height="140"></canvas>
+                        <canvas id="insulinachart" height="140"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Grafico Radar Incidencia Nefropatia</h5>
-                </div>
-                <div class="ibox-content">
-                    <div>
-                        <canvas id="radarChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <input type="hidden" id="hd" name="variable" value="{{ h_diab }}">
+    <input type="hidden" id="md" name="variable" value="{{ m_diab }}">
+    <input type="hidden" id="h" name="variable" value="{{ hombres }}">
+    <input type="hidden" id="m" name="variable" value="{{ mujeres }}">
+    <input type="hidden" id="diaLocE" name="variable" value="{{ diaxlocE }}">
+    <input type="hidden" id="diaLocM" name="variable" value="{{ diaxlocM }}">
+    <input type="hidden" id="diaLocG" name="variable" value="{{ diaxlocG }}">
+    <input type="hidden" id="diaLocO" name="variable" value="{{ diaxlocO }}">
+    <input type="hidden" id="diaLocR" name="variable" value="{{ diaxlocR }}">
+    <input type="hidden" id="diaLocS" name="variable" value="{{ diaxlocS }}">
+    <input type="hidden" id="insE" name="variable" value="{{ insulinaE }}">
+    <input type="hidden" id="insM" name="variable" value="{{ insulinaM }}">
+    <input type="hidden" id="insG" name="variable" value="{{ insulinaG }}">
+    <input type="hidden" id="insO" name="variable" value="{{ insulinaO }}">
+    <input type="hidden" id="insR" name="variable" value="{{ insulinaR }}">
+    <input type="hidden" id="insS" name="variable" value="{{ insulinaS }}">
 </div>
 {% endblock %}
 
@@ -88,6 +89,6 @@ Inicio / Reportes / Graficos
 {{ block.super }}
 <!-- ChartJS-->
 <script src="/static/js/plugins/chartJs/Chart.min.js"></script>
-<script src="/static/js/demo/chartjs-demo.js"></script>
+<script src="/static/js/scripts/graficos.js"></script>
 
 {% endblock %}
